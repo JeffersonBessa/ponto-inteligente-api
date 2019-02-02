@@ -1,6 +1,7 @@
 package br.com.bessa.jefferson.pontointeligente.api.repositories;
 
 import java.util.List;
+
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import org.springframework.boot.autoconfigure.data.web.SpringDataWebProperties.Pageable;

@@ -53,13 +53,14 @@ public class LancamentoRepositoryTest {
 	public void tearDown() throws Exception {
 		this.empresaRepository.deleteAll();
 	}
-	
+	@Ignore
 	@Test
 	public void testBuscarLancamentosPorFuncionarioId() { 
 		List<Lancamento> lancamentos = this.lancamentoRepository.findByFuncionarioId(funcionarioId);
 		assertEquals(2, lancamentos.size());
 	}
 	
+	@Ignore
 	@Test
 	public void testBuscarLancamentosPorFuncionarioIdPaginado() { 
 		PageRequest page = new PageRequest(0, 10);
