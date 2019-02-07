@@ -26,7 +26,7 @@ public class FuncionarioRepositoryTest {
 	@Autowired
 	private EmpresaRepository empresaRepository;
 	
-	private static final String EMAIL = "jefferson.bessa@gmail.com";
+	private static final String EMAIL = "jefferson.bessa10@gmail.com";
 	private static final String CPF = "08710815473";
 	
 	@Before

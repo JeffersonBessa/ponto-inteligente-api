@@ -60,14 +60,15 @@ public class LancamentoRepositoryTest {
 		assertEquals(2, lancamentos.size());
 	}
 	
+	@SuppressWarnings("deprecation")
 	@Ignore
 	@Test
-	public void testBuscarLancamentosPorFuncionarioIdPaginado() { 
-		PageRequest page = new PageRequest(0, 10);
-		Page<Lancamento> lancamentos = this.lancamentoRepository.findByFuncionarioId(funcionarioId, page);
-		
-		assertEquals(2, lancamentos.getTotalElements());
-	}
+	 public void testBuscarLancamentosPorFuncionarioIdPaginado() { 
+		PageRequest page = new PageRequest(0, 10); Page<Lancamento> lancamentos =
+		this.lancamentoRepository.findByFuncionarioId(funcionarioId, page);
+	 
+		assertEquals(2, lancamentos.getTotalElements()); 
+	 }
 
 	private Lancamento obterDadosLancamentos(Funcionario funcionario) {
 		Lancamento lancamento = new Lancamento();

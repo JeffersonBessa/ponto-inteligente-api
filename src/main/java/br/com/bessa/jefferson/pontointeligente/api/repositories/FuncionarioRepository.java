@@ -1,9 +1,11 @@
 package br.com.bessa.jefferson.pontointeligente.api.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 import br.com.bessa.jefferson.pontointeligente.api.entities.Funcionario;
 
+@Repository
 @Transactional(readOnly = true)
 public interface FuncionarioRepository extends JpaRepository<Funcionario, Long> {
 	
