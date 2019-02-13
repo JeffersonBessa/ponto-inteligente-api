@@ -97,6 +97,7 @@ public class CadastroPJController {
 	private Empresa converterDtoParaEmpresa(@Valid CadastroPJDto cadastroPJDto) {
 		
 		Empresa empresa = new Empresa();
+		
 		empresa.setCnpj(cadastroPJDto.getCnpj());
 		empresa.setRazaoSocial(cadastroPJDto.getRazaoSocial());
 		return empresa;
@@ -113,6 +114,7 @@ public class CadastroPJController {
 	private Funcionario converterDtoParaFuncionario(@Valid CadastroPJDto cadastroPJDto, BindingResult result) throws NoSuchAlgorithmException {
 		
 		Funcionario funcionario = new Funcionario();
+		
 		funcionario.setNome(cadastroPJDto.getNome());
 		funcionario.setEmail(cadastroPJDto.getEmail());
 		funcionario.setCpf(cadastroPJDto.getCpf());
@@ -124,12 +126,13 @@ public class CadastroPJController {
 	/**
 	 * Popula o DTO de cadastro com os dados do funcionário e empresa.
 	 * 
-	 * @param Funcionario
+	 * @param funcionario
 	 * @return CadastroPJDto
 	 */
 	private CadastroPJDto converterCadastroPJDto(Funcionario funcionario) {
 		
 		CadastroPJDto cadastroPJDto = new CadastroPJDto();
+		
 		cadastroPJDto.setId(funcionario.getId());
 		cadastroPJDto.setNome(funcionario.getNome());
 		cadastroPJDto.setEmail(funcionario.getEmail());

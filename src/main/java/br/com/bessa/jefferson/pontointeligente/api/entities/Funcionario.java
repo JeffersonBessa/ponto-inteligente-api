@@ -114,7 +114,7 @@ public class Funcionario implements Serializable {
 	}
 	
 	@Transient
-	public Optional<Float> getValorDiaOpt() {
+	public Optional<Float> getQtdeHorasTrabalhoDiaOpt() {
 		return Optional.ofNullable(qtdeHorasTrabalhaDia);
 	}
 
