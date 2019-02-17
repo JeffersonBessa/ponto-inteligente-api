@@ -2,6 +2,7 @@ package br.com.bessa.jefferson.pontointeligente.api.controllers;
 
 import java.math.BigDecimal;
 import java.security.NoSuchAlgorithmException;
+import java.text.ParseException;
 import java.util.Optional;
 import javax.validation.Valid;
 import org.slf4j.Logger;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import br.com.bessa.jefferson.pontointeligente.api.dtos.FuncionarioDto;
 import br.com.bessa.jefferson.pontointeligente.api.entities.Funcionario;
+import br.com.bessa.jefferson.pontointeligente.api.entities.Lancamento;
 import br.com.bessa.jefferson.pontointeligente.api.response.Response;
 import br.com.bessa.jefferson.pontointeligente.api.services.FuncionarioService;
 import br.com.bessa.jefferson.pontointeligente.api.utils.PasswordUtils;
@@ -124,5 +126,4 @@ public class FuncionarioController {
 		
 		return funcionarioDto;
 	}
-
 }
