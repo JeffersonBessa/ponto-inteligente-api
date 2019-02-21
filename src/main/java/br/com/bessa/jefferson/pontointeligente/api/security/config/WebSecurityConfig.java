@@ -14,6 +14,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+
 import br.com.bessa.jefferson.pontointeligente.api.security.JwtAuthenticationEntryPoint;
 import br.com.bessa.jefferson.pontointeligente.api.security.filters.JwtAuthenticationTokenFilter;
 
@@ -23,7 +24,7 @@ import br.com.bessa.jefferson.pontointeligente.api.security.filters.JwtAuthentic
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	
 	@Autowired
-	private JwtAuthenticationEntryPoint unaunthorizedHandler;
+	private JwtAuthenticationEntryPoint unauthorizedHandler;
 	
 	@Autowired
 	private UserDetailsService userDetailsService;
@@ -33,10 +34,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		authenticationManagerBuilder.userDetailsService(this.userDetailsService).passwordEncoder(passwordEncoder());
 	}
 	
-	@Bean
-	public AuthenticationManager customAuthenticationManager() throws Exception {
-	  return authenticationManager();
-	}
+	
+	 @Bean 
+	 public AuthenticationManager authenticate() throws
+	 Exception { return authenticationManager(); }
+	 
 
 	@Bean
 	public PasswordEncoder passwordEncoder() {
@@ -50,11 +52,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	
 	@Override
 	protected void configure(HttpSecurity httpSecurity) throws Exception {
-	
-		httpSecurity.csrf().disable().exceptionHandling().authenticationEntryPoint(unaunthorizedHandler).and()
-			.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and().authorizeRequests()
-				.antMatchers("/auth/**").permitAll().anyRequest().authenticated();
-		
+		httpSecurity.csrf().disable().exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()
+				.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and().authorizeRequests()
+				.antMatchers("/auth/**", "/api/cadastrar-pj", "/api/cadastrar-pf", "/v2/api-docs",
+						"/swagger-resources/**", "/configuration/security", "/swagger-ui.html", "/webjars/**")
+				.permitAll().anyRequest().authenticated();
 		httpSecurity.addFilterBefore(authenticationTokenFilterBean(), UsernamePasswordAuthenticationFilter.class);
 		httpSecurity.headers().cacheControl();
 	}

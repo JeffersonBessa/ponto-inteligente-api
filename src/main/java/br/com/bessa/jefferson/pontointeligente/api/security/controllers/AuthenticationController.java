@@ -5,10 +5,10 @@ import java.util.Optional;
 import javax.naming.AuthenticationException;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -37,7 +37,6 @@ public class AuthenticationController {
 	private static final String TOKEN_HEADER = "Authorization";
 	private static final String BEARER_PREFIX = "Bearer";
 	
-//	@Qualifier("authenticationManagerBean")
 	@Autowired
 	private AuthenticationManager authenticationManager;
 	
@@ -68,9 +67,11 @@ public class AuthenticationController {
 		}
 		
 		log.info("Gerando token para o email: {}", authenticationDto.getEmail());
-		Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
-				authenticationDto.getEmail(), authenticationDto.getSenha()));
 		
+		Authentication authentication = authenticationManager.authenticate(new
+		UsernamePasswordAuthenticationToken( authenticationDto.getEmail(),
+		authenticationDto.getSenha()));
+		 
 		SecurityContextHolder.getContext().setAuthentication(authentication);
 				
 		UserDetails userDetails = userDetailsService.loadUserByUsername(authenticationDto.getEmail());
